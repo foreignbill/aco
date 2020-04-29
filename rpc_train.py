@@ -13,7 +13,7 @@ model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
 
 # replace the classifier with a new one, that has
 # num_classes which is user-defined
-num_classes = 2  # 1 class (traffic light) + background
+num_classes = 4  # 1 class (traffic light) + background
 # get number of input features for the classifier
 in_features = model.roi_heads.box_predictor.cls_score.in_features
 # replace the pre-trained head with a new one
@@ -23,7 +23,7 @@ from engine import train_one_epoch, evaluate
 import utils
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-num_classes = 2
+num_classes = 4
 
 list_fpath = './RPC-dataset/instances_train2019.json'
 dataset = RPCDataset(list_fpath)
