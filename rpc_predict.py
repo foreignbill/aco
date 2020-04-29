@@ -1,5 +1,5 @@
 from torchvision import transforms
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 import cv2
 import torch
 import torchvision
