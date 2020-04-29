@@ -23,9 +23,9 @@ class RPCDataset(torch.utils.data.Dataset):
                     'ymax': int(bbox[1]) + int(bbox[3]),
                 }
                 json2path_dict = {
-                    "RPC-dataset/instances_train2019.json": "train2019",
-                    "RPC-dataset/instances_test2019.json": "test2019",
-                    "RPC-dataset/instances_val2019.json": "val2019"
+                    "./RPC-dataset/instances_train2019.json": "train2019",
+                    "./RPC-dataset/instances_test2019.json": "test2019",
+                    "./RPC-dataset/instances_val2019.json": "val2019"
                 }
                 image_label = {
                     'path': os.path.join("RPC-dataset", json2path_dict[list_file_path], new_dict['images'][annotation['image_id'] - 1]['file_name']),
