@@ -1,31 +1,33 @@
 from torchvision import transforms
 from PIL import Image
-import cv2
+# import cv2
 import torch
 import torchvision
 import numpy as np
 import json
 
-from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
+# from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 
-device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
+# device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+# model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
 
-num_classes = 4  # 1 class (traffic light) + background
-# get number of input features for the classifier
-in_features = model.roi_heads.box_predictor.cls_score.in_features
-model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
-TL_MODEL_PATH = 'rpc_detect_model.pth'
-model.load_state_dict(torch.load(TL_MODEL_PATH))
-model.to(device)
-model.eval()
-trans = transforms.Compose([transforms.ToTensor()])
+# num_classes = 4  # 1 class (traffic light) + background
+# # get number of input features for the classifier
+# in_features = model.roi_heads.box_predictor.cls_score.in_features
+# model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
+# TL_MODEL_PATH = 'rpc_detect_model.pth'
+# model.load_state_dict(torch.load(TL_MODEL_PATH))
+# model.to(device)
+# model.eval()
+# trans = transforms.Compose([transforms.ToTensor()])
 
 # new_dict = {}
 with open('./RPC-dataset/instances_test2019.json', 'r') as f:
     new_dict = json.loads(f.read())
 
-print(new_dict['images'][0])
+categories = new_dict['categories']
+chinese_names = new_dict['__raw_Chinese_name_df']
+print(categories[0])
 
 test_img_dir = './RPC-dataset/test2019'
 for i in range(100):
@@ -48,6 +50,7 @@ for i in range(100):
         if confidence < 0.7:
             continue
         cv2.rectangle(cv_img, (xmin, ymin), (xmax, ymax), (0, 0, 255), 2)
-        cv2.putText(cv_img, "hello world!", (xmin, ymin), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
+        category_id = int(predictions[0]['labels'][j]) - 1
+        cv2.putText(cv_img, chinese_names[category_id]['name'], (xmin, ymin), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
     print('./output/{:0>5d}.jpg'.format(i))
     cv2.imwrite('./output/{:0>5d}.jpg'.format(i), cv_img)
