@@ -48,4 +48,5 @@ for i in range(100):
         if confidence < 0.7:
             continue
         cv2.rectangle(cv_img, (xmin, ymin), (xmax, ymax), (0,0,255), 2)
+    print('./vis_det/{:0>5d}.jpg'.format(i))
     cv2.imwrite('./vis_det/{:0>5d}.jpg'.format(i), cv_img)
