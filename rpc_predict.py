@@ -47,6 +47,7 @@ for i in range(100):
         print(confidence)
         if confidence < 0.7:
             continue
-        cv2.rectangle(cv_img, (xmin, ymin), (xmax, ymax), (0,0,255), 2)
+        cv2.rectangle(cv_img, (xmin, ymin), (xmax, ymax), (0, 0, 255), 2)
+        cv2.putText(cv_img, "hello world!", (xmin, ymin), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
     print('./output/{:0>5d}.jpg'.format(i))
     cv2.imwrite('./output/{:0>5d}.jpg'.format(i), cv_img)
