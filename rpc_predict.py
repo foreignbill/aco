@@ -8,6 +8,19 @@ import json
 
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 
+def cv2ImgAddText(img, text, left, top, textColor=(0, 255, 0), textSize=20):
+    if (isinstance(img, numpy.ndarray)):  # 判断是否OpenCV图片类型
+        img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    # 创建一个可以在给定图像上绘图的对象
+    draw = ImageDraw.Draw(img)
+    # 字体的格式
+    fontStyle = ImageFont.truetype(
+        "font/simsun.ttc", textSize, encoding="utf-8")
+    # 绘制文本
+    draw.text((left, top), text, textColor, font=fontStyle)
+    # 转换回OpenCV格式
+    return cv2.cvtColor(numpy.asarray(img), cv2.COLOR_RGB2BGR)
+
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
 
@@ -51,6 +64,8 @@ for i in range(100):
             continue
         cv2.rectangle(cv_img, (xmin, ymin), (xmax, ymax), (0, 0, 255), 2)
         category_id = int(predictions[0]['labels'][j]) - 1
-        cv2.putText(cv_img, chinese_names[category_id]['name'], (xmin, ymin), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
+        # cv2.putText(cv_img, chinese_names[category_id]['name'], (xmin, ymin), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
+        cv_img = cv2ImgAddText(cv_img, chinese_names[category_id]['name'], xmin, ymin, (0, 255, 0), 12)
+
     print('./output/{:0>5d}.jpg'.format(i))
     cv2.imwrite('./output/{:0>5d}.jpg'.format(i), cv_img)
