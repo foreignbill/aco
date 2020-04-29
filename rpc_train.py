@@ -25,7 +25,7 @@ import utils
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 num_classes = 2
 
-list_fpath = './RPC-dataset/trainsets/list'
+list_fpath = './RPC-dataset/instances_train2019.json'
 dataset = RPCDataset(list_fpath)
 dataset_test = RPCDataset(list_fpath)
 
