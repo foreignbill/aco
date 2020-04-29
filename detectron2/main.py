@@ -1,17 +1,18 @@
 
 import random
-from detectron2.detectron2.utils.visualizer import Visualizer
-from detectron2.detectron2.data.catalog import MetadataCatalog, DatasetCatalog
+from detectron2.utils.visualizer import Visualizer
+from detectron2.data.catalog import MetadataCatalog, DatasetCatalog
 import fruitsnuts_data
 import cv2
-from detectron2.detectron2.engine import DefaultTrainer
-from detectron2.detectron2.config import get_cfg
+from detectron2.engine import DefaultTrainer
+from detectron2.config import get_cfg
 import os
-from detectron2.detectron2.engine.defaults import DefaultPredictor
-from detectron2.detectron2.utils.visualizer import ColorMode
+from detectron2.engine.defaults import DefaultPredictor
+from detectron2.utils.visualizer import ColorMode
 
 
 fruits_nuts_metadata = MetadataCatalog.get("fruits_nuts")
+
 
 if __name__ == "__main__":
     cfg = get_cfg()
