@@ -6,6 +6,8 @@ import torchvision
 import numpy as np
 import json
 
+from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
+
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
 
