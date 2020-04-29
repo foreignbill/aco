@@ -44,3 +44,7 @@ wheels/
 /datasets
 /projects/*/datasets
 /models
+
+# data
+/data
+data.zip
