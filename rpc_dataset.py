@@ -13,8 +13,8 @@ class RPCDataset(torch.utils.data.Dataset):
         with open(list_file_path, 'r') as f:
             new_dict = json.loads(f.read())
             for annotation in new_dict['annotations']:
-                if annotation['category_id'] >= 2:
-                    continue
+                # if annotation['category_id'] >= 2:
+                #     continue
                 bbox = annotation['bbox']
                 label_dict = {
                     'supercategory': new_dict['categories'][annotation['category_id'] - 1]['supercategory'],
