@@ -35,7 +35,7 @@ for i in range(100):
     cv_img = cv2.cvtColor(np.asarray(test_img),cv2.COLOR_RGB2BGR)
     x = [trans(test_img).to(device)]
     predictions = model(x)
-    # print(predictions)
+    print(predictions)
     num_boxes = predictions[0]['scores'].size()[0]
     for j in range(num_boxes):
         xmin = int(predictions[0]['boxes'][j][0].item())
