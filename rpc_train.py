@@ -62,6 +62,8 @@ for epoch in range(num_epochs):
     lr_scheduler.step()
     # evaluate on the test dataset
     evaluate(model, data_loader_test, device=device)
+    TL_MODEL_PATH = 'rpc_detect_model{}.pth'.format(epoch)
+    torch.save(model.state_dict(), TL_MODEL_PATH)
 
 print("Done!")
 
