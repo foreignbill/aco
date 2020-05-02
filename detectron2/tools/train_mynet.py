@@ -28,7 +28,7 @@ from detectron2.modeling import GeneralizedRCNNWithTTA
 import pycocotools
 
 # fmt: off
-#CLASS_NAMES = ['背景', '瓶盖破损', '瓶盖变形',  '瓶盖坏边', '瓶盖打旋', '瓶盖断点', '标贴歪斜', '标贴起皱', '标贴气泡', '喷码正常', '喷码异常']
+# CLASS_NAMES = ['背景', '瓶盖破损', '瓶盖变形',  '瓶盖坏边', '瓶盖打旋', '瓶盖断点', '标贴歪斜', '标贴起皱', '标贴气泡', '喷码正常', '喷码异常']
 # 数据集路径
 # DATASET_ROOT = '/data/zwh/04.tianchi/01.chongqing/2.Scheme/3.detectron2/2.Dataset'
 DATASET_ROOT = '../../RPC-dataset'
@@ -81,7 +81,7 @@ def plain_register_dataset():
 
     #DatasetCatalog.register("coco_my_val", lambda: load_coco_json(VAL_JSON, VAL_PATH, "coco_2017_val"))
     DatasetCatalog.register("coco_my_val", lambda: load_coco_json(VAL_JSON, VAL_PATH))
-    MetadataCatalog.get("coco_my_val").set(thing_classes=CLASS_NAMES, # 可以选择开启，但是不能显示中文，所以本人关闭
+    MetadataCatalog.get("coco_my_val").set(#thing_classes=CLASS_NAMES, # 可以选择开启，但是不能显示中文，所以本人关闭
                                                 evaluator_type='coco', # 指定评估方式
                                                 json_file=VAL_JSON,
                                                 image_root=VAL_PATH)
@@ -265,5 +265,5 @@ if __name__ == "__main__":
         num_machines=args.num_machines,
         machine_rank=args.machine_rank,
         dist_url=args.dist_url,
-        args=(args,),
+        args=(args),
     )
