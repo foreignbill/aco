@@ -81,7 +81,7 @@ def plain_register_dataset():
 
     #DatasetCatalog.register("coco_my_val", lambda: load_coco_json(VAL_JSON, VAL_PATH, "coco_2017_val"))
     DatasetCatalog.register("coco_my_val", lambda: load_coco_json(VAL_JSON, VAL_PATH))
-    MetadataCatalog.get("coco_my_val").set(#thing_classes=CLASS_NAMES, # 可以选择开启，但是不能显示中文，所以本人关闭
+    MetadataCatalog.get("coco_my_val").set(thing_classes=CLASS_NAMES, # 可以选择开启，但是不能显示中文，所以本人关闭
                                                 evaluator_type='coco', # 指定评估方式
                                                 json_file=VAL_JSON,
                                                 image_root=VAL_PATH)
