@@ -27,7 +27,7 @@ num_classes = 4  # 1 class (traffic light) + background
 # get number of input features for the classifier
 in_features = model.roi_heads.box_predictor.cls_score.in_features
 model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
-TL_MODEL_PATH = 'rpc_detect_model.pth'
+TL_MODEL_PATH = 'rpc_detect_model9.pth'
 model.load_state_dict(torch.load(TL_MODEL_PATH))
 model.to(device)
 model.eval()
