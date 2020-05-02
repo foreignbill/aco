@@ -62,7 +62,7 @@ for i in range(100):
         if confidence < 0.7:
             continue
         cv2.rectangle(cv_img, (xmin, ymin), (xmax, ymax), (0, 0, 255), 2)
-        print(predictions[0])
+        print(predictions[0]['labels'])
         category_id = int(predictions[0]['labels'][j]) - 1
         # cv2.putText(cv_img, chinese_names[category_id]['name'], (xmin, ymin), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
         cv_img = cv2ImgAddText(cv_img, chinese_names[category_id]['name'], xmin, ymin, (0, 255, 0), 36)
