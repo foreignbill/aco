@@ -34,14 +34,14 @@ model.eval()
 trans = transforms.Compose([transforms.ToTensor()])
 
 new_dict = {}
-with open('./RPC-dataset/instances_test2019.json', 'r') as f:
+with open('./RPC-dataset/instances_train2019.json', 'r') as f:
     new_dict = json.loads(f.read())
 
 categories = new_dict['categories']
 chinese_names = new_dict['__raw_Chinese_name_df']
 print(categories[0])
 
-test_img_dir = './RPC-dataset/test2019'
+test_img_dir = './RPC-dataset/train2019'
 for i in range(100):
     filename = new_dict['images'][i]['file_name']
     test_img_path = '{}/{}'.format(test_img_dir, filename)
