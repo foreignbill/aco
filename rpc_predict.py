@@ -64,7 +64,7 @@ for i in range(100):
         cv2.rectangle(cv_img, (xmin, ymin), (xmax, ymax), (0, 0, 255), 2)
         category_id = int(predictions[0]['labels'][j]) - 1
         # cv2.putText(cv_img, chinese_names[category_id]['name'], (xmin, ymin), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
-        cv_img = cv2ImgAddText(cv_img, chinese_names[category_id]['name'], xmin, ymin, (0, 255, 0), 12)
+        cv_img = cv2ImgAddText(cv_img, chinese_names[category_id]['name'], xmin, ymin, (0, 255, 0), 36)
 
     print('./output/{:0>5d}.jpg'.format(i))
     cv2.imwrite('./output/{:0>5d}.jpg'.format(i), cv_img)
