@@ -23,7 +23,6 @@ from engine import train_one_epoch, evaluate
 import utils
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-num_classes = 201
 
 list_fpath = './RPC-dataset/instances_train2019.json'
 dataset = RPCDataset(list_fpath)
@@ -36,11 +35,11 @@ dataset_test = torch.utils.data.Subset(dataset_test, indices[-80:])
 
 # define training and validation data loaders
 data_loader = torch.utils.data.DataLoader(
-    dataset, batch_size=2, shuffle=True, num_workers=1,
+    dataset, batch_size=2, shuffle=True, num_workers=4,
     collate_fn=utils.collate_fn)
 
 data_loader_test = torch.utils.data.DataLoader(
-    dataset_test, batch_size=1, shuffle=False, num_workers=1,
+    dataset_test, batch_size=1, shuffle=False, num_workers=4,
     collate_fn=utils.collate_fn)
 
 model.to(device)
@@ -53,7 +52,7 @@ optimizer = torch.optim.SGD(params, lr=0.01, momentum=0.9, weight_decay=0.0005)
 lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=6, gamma=0.1)
 
 # let's train it for 10 epochs
-num_epochs = 10
+num_epochs = 100
 
 for epoch in range(num_epochs):
     # train for one epoch, printing every 10 iterations
