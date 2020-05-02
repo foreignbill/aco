@@ -23,7 +23,7 @@ def cv2ImgAddText(img, text, left, top, textColor=(0, 255, 0), textSize=20):
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
 
-num_classes = 4  # 1 class (traffic light) + background
+num_classes = 201  # 1 class (traffic light) + background
 # get number of input features for the classifier
 in_features = model.roi_heads.box_predictor.cls_score.in_features
 model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
