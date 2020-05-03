@@ -186,8 +186,8 @@ def setup(args):
     cfg.INPUT.CROP.ENABLED = True
     cfg.INPUT.MAX_SIZE_TRAIN = 3000 # 训练图片输入的最大尺寸
     cfg.INPUT.MAX_SIZE_TEST = 3000 # 测试数据输入的最大尺寸
-    cfg.INPUT.MIN_SIZE_TRAIN = 3000 # 训练图片输入的最小尺寸，可以吃定为多尺度训练
-    cfg.INPUT.MIN_SIZE_TEST = 3000
+    cfg.INPUT.MIN_SIZE_TRAIN = 1000 # 训练图片输入的最小尺寸，可以吃定为多尺度训练
+    cfg.INPUT.MIN_SIZE_TEST = 1000
     cfg.INPUT.MIN_SIZE_TRAIN_SAMPLING = 'range'
 
     cfg.MODEL.RETINANET.NUM_CLASSES = 201  # 类别数
