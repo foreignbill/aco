@@ -31,7 +31,7 @@ import pycocotools
 # CLASS_NAMES = ['背景', '瓶盖破损', '瓶盖变形',  '瓶盖坏边', '瓶盖打旋', '瓶盖断点', '标贴歪斜', '标贴起皱', '标贴气泡', '喷码正常', '喷码异常']
 # 数据集路径
 # DATASET_ROOT = '/data/zwh/04.tianchi/01.chongqing/2.Scheme/3.detectron2/2.Dataset'
-DATASET_ROOT = '../../RPC-dataset'
+DATASET_ROOT = '../RPC-dataset'
 ANN_ROOT = os.path.join(DATASET_ROOT)
 
 TRAIN_PATH = os.path.join(DATASET_ROOT, 'train2019')
@@ -174,7 +174,7 @@ def setup(args):
     Create configs and perform basic setups.
     """
     cfg = get_cfg() # 拷贝default config副本
-    args.config_file = "../configs/COCO-Detection/fast_rcnn_R_50_FPN_1x.yaml"
+    args.config_file = "configs/COCO-Detection/fast_rcnn_R_50_FPN_1x.yaml"
     cfg.merge_from_file(args.config_file)   # 从config file 覆盖配置
     cfg.merge_from_list(args.opts)          # 从CLI参数 覆盖配置
 
