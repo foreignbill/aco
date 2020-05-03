@@ -174,7 +174,7 @@ def setup(args):
     Create configs and perform basic setups.
     """
     cfg = get_cfg() # 拷贝default config副本
-    args.config_file = "configs/COCO-Detection/retinanet_R_50_FPN_1x.yaml"
+    args.config_file = "configs/COCO-Detection/rpn_R_50_C4_1x.yaml"
     cfg.merge_from_file(args.config_file)   # 从config file 覆盖配置
     cfg.merge_from_list(args.opts)          # 从CLI参数 覆盖配置
 
