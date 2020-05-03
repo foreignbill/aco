@@ -135,7 +135,7 @@ def load_proposals_into_dataset(dataset_dicts, proposal_file):
     # Convert image_id to str since they could be int.
     img_ids = set({str(record["image_id"]) for record in dataset_dicts})
     id_to_index = {str(id): i for i, id in enumerate(proposals["ids"]) if str(id) in img_ids}
-    with open('log.txt', 'r') as f:
+    with open('log.txt', 'w') as f:
         f.write(id_to_index)
 
     # Assuming default bbox_mode of precomputed proposals are 'XYXY_ABS'
