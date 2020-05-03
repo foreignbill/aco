@@ -190,7 +190,7 @@ def setup(args):
     cfg.INPUT.MIN_SIZE_TEST = 1000
     cfg.INPUT.MIN_SIZE_TRAIN_SAMPLING = 'range'
 
-    cfg.MODEL.RETINANET.NUM_CLASSES = 201  # 类别数
+    cfg.MODEL.RETINANET.NUM_CLASSES = 200  # 类别数
     #cfg.MODEL.WEIGHTS = "/homeDocuments/pretrainedModel/Detectron2/R-50.pkl"    # 预训练模型权重
     cfg.SOLVER.IMS_PER_BATCH = 48  # batch_size=2; iters_in_one_epoch = dataset_imgs/batch_size
 
