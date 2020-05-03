@@ -135,21 +135,15 @@ def load_proposals_into_dataset(dataset_dicts, proposal_file):
     # Convert image_id to str since they could be int.
     img_ids = set({str(record["image_id"]) for record in dataset_dicts})
     id_to_index = {str(id): i for i, id in enumerate(proposals["ids"]) if str(id) in img_ids}
-    import json
-    with open('log.txt', 'w') as f:
-        f.write(json.dumps(id_to_index))
 
     # Assuming default bbox_mode of precomputed proposals are 'XYXY_ABS'
     bbox_mode = BoxMode(proposals["bbox_mode"]) if "bbox_mode" in proposals else BoxMode.XYXY_ABS
 
-    index_to_id = {}
-    for x in id_to_index:
-        index_to_id.setdefault(str(id_to_index.get(x)), int(x))
-
     for record in dataset_dicts:
         # Get the index of the proposal
-        # i = id_to_index[str(record["image_id"])]
-        i = index_to_id[str(record["image_id"])]
+        if id_to_index.has_key(str(record["image_id"])) == False:
+            continue
+        i = id_to_index[str(record["image_id"])]
 
         boxes = proposals["boxes"][i]
         objectness_logits = proposals["objectness_logits"][i]
