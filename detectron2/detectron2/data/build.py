@@ -142,7 +142,7 @@ def load_proposals_into_dataset(dataset_dicts, proposal_file):
     for record in dataset_dicts:
         # Get the index of the proposal
         print(str(record["image_id"]))
-        i = id_to_index[str(record["image_id"])]
+        i = id_to_index[str(record["image_id"] + 1)]
         print(i)
 
         boxes = proposals["boxes"][i]

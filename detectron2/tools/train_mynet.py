@@ -237,7 +237,7 @@ def main(args):
     plain_register_dataset()
 
     # 检测数据集注释是否正确
-    checkout_dataset_annotation()
+    # checkout_dataset_annotation()
 
 
     # 如果只是进行评估
