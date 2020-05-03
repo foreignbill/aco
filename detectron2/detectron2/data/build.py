@@ -141,11 +141,7 @@ def load_proposals_into_dataset(dataset_dicts, proposal_file):
 
     for record in dataset_dicts:
         # Get the index of the proposal
-        i = 0
-        if str(record["image_id"]) in id_to_index:
-            i = id_to_index[str(record["image_id"])]
-        else:
-            continue
+        i = id_to_index[str(record["image_id"])]
 
         boxes = proposals["boxes"][i]
         objectness_logits = proposals["objectness_logits"][i]
